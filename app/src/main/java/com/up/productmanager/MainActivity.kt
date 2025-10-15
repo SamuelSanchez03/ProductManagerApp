@@ -2,54 +2,38 @@ package com.up.productmanager
 
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
-    private val BASE_URL = "http://10.0.2.2:8000/"
-    private val TAG = "CHECK_RESPONSE"
+
+    private val viewModel: ProductViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        getAllProducts()
-    }
-
-    private fun getAllProducts() {
-        val api = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(API::class.java)
-
-        api.getProducts().enqueue(object : Callback<List<Product>> {
-            override fun onResponse(
-                call: Call<List<Product>?>,
-                response: Response<List<Product>?>
-            ) {
-                if(response.isSuccessful) {
-                    response.body()?.let {
-                        for(comment in it) {
-                            Log.i(TAG, "onResponse: ${comment.nombre}")
-                        }
-                    }
-                }
+        // Observa cambios en la lista
+        viewModel.products.observe(this, Observer { lista ->
+            lista.forEach {
+                Log.d("PRODUCTS", "${it.id}: ${it.nombre} - ${it.precio}")
             }
-
-            override fun onFailure(
-                call: Call<List<Product>?>,
-                t: Throwable
-            ) {
-                Log.i(TAG, "onFailure: ${t.message}")
-            }
-
         })
+
+        // Observa mensajes (éxito / error)
+        viewModel.message.observe(this, Observer { msg ->
+            Log.i("API_MESSAGE", msg)
+        })
+
+        // Cargar productos al iniciar
+        viewModel.loadProducts()
+
+        // Ejemplo: Crear un producto nuevo
+        val newProduct = ProductCreate("Test", 299.99, 15)
+        viewModel.createProduct(newProduct)
+
+        // Ejemplo: Eliminar un producto (ID 2)
+        // viewModel.deleteProduct(4)
     }
 }

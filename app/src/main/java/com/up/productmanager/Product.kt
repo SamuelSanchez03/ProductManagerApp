@@ -4,5 +4,11 @@ data class Product(
     val id : Int,
     val nombre : String,
     val precio : Double,
-    val cantidad : Int
+    val cantidad_disponible: Int
+)
+
+data class ProductCreate(
+    val nombre: String,
+    val precio: Double,
+    val cantidad_disponible: Int
 )
