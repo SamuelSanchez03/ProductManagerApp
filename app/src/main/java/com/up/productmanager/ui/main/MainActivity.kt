@@ -1,10 +1,13 @@
-package com.up.productmanager
+package com.up.productmanager.ui.main
 
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import com.up.productmanager.data.model.ProductCreate
+import com.up.productmanager.ui.main.ProductViewModel
+import com.up.productmanager.R
 
 class MainActivity : AppCompatActivity() {
 

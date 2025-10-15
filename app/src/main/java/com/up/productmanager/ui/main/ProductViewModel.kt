@@ -1,7 +1,10 @@
-package com.up.productmanager
+package com.up.productmanager.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import com.up.productmanager.data.model.Product
+import com.up.productmanager.data.model.ProductCreate
+import com.up.productmanager.data.repository.ProductRepository
 
 class ProductViewModel : ViewModel() {
 

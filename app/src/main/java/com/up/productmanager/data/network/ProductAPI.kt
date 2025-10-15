@@ -1,4 +1,6 @@
-package com.up.productmanager
+package com.up.productmanager.data.network
+import com.up.productmanager.data.model.Product
+import com.up.productmanager.data.model.ProductCreate
 import retrofit2.Call
 import retrofit2.http.*
 

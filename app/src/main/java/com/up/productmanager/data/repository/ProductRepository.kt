@@ -1,7 +1,10 @@
-package com.up.productmanager
+package com.up.productmanager.data.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.up.productmanager.data.model.Product
+import com.up.productmanager.data.model.ProductCreate
+import com.up.productmanager.data.network.RetrofitClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
