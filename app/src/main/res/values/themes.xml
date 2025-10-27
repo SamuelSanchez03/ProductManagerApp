@@ -6,4 +6,24 @@
     </style>
 
     <style name="Theme.ProductManager" parent="Base.Theme.ProductManager" />
+
+    <!-- Pop-up style -->
+    <style name="Theme.ProductManager.Popup" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- Make the window itself transparent (removes that white rectangle) -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="background">@android:color/transparent</item>
+
+        <!-- Let us see content behind and add dim -->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.35</item>
+
+        <!-- Optional: width comfort on phones -->
+        <item name="android:windowMinWidthMajor">85%</item>
+        <item name="android:windowMinWidthMinor">85%</item>
+    </style>
+
 </resources>
