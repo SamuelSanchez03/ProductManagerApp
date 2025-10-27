@@ -2,13 +2,32 @@ package com.up.productmanager.ui.main
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.up.productmanager.R
+import androidx.activity.viewModels
+import com.up.productmanager.data.model.ProductCreate
 
 class AddProductActivity : AppCompatActivity() {
+
+    private val viewModel: ProductViewModel by viewModels()
+
+    private lateinit var saveBtn : Button
+    private lateinit var nameTxt : EditText
+    private lateinit var priceTxt : EditText
+    private lateinit var qtyTxt : EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)
+
+        saveBtn = findViewById<Button>(R.id.btnSave)
+        nameTxt = findViewById<EditText>(R.id.txtName)
+        priceTxt = findViewById<EditText>(R.id.txtPrice)
+        qtyTxt = findViewById<EditText>(R.id.txtQty)
+
 
         val scrim = findViewById<View>(R.id.scrim)
         val card = findViewById<View>(R.id.popupCard)
@@ -38,12 +57,26 @@ class AddProductActivity : AppCompatActivity() {
         findViewById<View>(R.id.btnClose).setOnClickListener(close)
 
         //Add botón -----------------
-        // -> obtener input y crear nuevo producto
-            // Ejemplo: Crear un producto nuevo
-            //val newProduct = ProductCreate("Test", 299.99, 15)
-            //viewModel.createProduct(newProduct)
-        // Poner mensaje con toast que diga algo de "Product added"
-        //Regresar a pantalla inicial MainActivity
+        saveBtn.setOnClickListener{
 
+            //Obtener input
+            val name = nameTxt.text.toString()
+            val priceStr = priceTxt.text.toString()
+            val qtyStr = qtyTxt.text.toString()
+
+
+            //Validar que los campos no estén vacíos
+            if(name.isNotEmpty() && priceStr.isNotEmpty() && qtyStr.isNotEmpty()){
+                val price = priceStr.toDouble()
+                val qty = qtyStr.toInt()
+
+                //crear nuevo producto
+                viewModel.createProduct(ProductCreate(name, price, qty))
+                Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show()
+                close(it) //regresar a MainActivity
+            }else{
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

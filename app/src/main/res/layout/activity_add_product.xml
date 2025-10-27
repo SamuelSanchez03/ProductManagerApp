@@ -25,7 +25,7 @@
         android:elevation="8dp">
 
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/AddProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Product"
@@ -36,14 +36,14 @@
 
 
         <EditText
-            android:id="@+id/etName"
+            android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
             android:backgroundTint="@color/light_gray"/>
 
         <EditText
-            android:id="@+id/etPrice"
+            android:id="@+id/txtPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -51,7 +51,7 @@
             android:backgroundTint="@color/light_gray" />
 
         <EditText
-            android:id="@+id/etQty"
+            android:id="@+id/txtQty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
