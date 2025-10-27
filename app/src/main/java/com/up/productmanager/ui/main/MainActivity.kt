@@ -78,16 +78,20 @@ class MainActivity : AppCompatActivity() {
 
         // Cargar productos y mostrarlos
         viewModel.products.observe(this) { renderProducts(it) }
-        viewModel.loadProducts()
 
     }
 
+    override fun onResume(){
+        super.onResume()
+        viewModel.loadProducts()
+    }
     private fun renderProducts(lista: List<com.up.productmanager.data.model.Product>) {
         listContainer.removeAllViews()
 
         val inflater = LayoutInflater.from(this)
         lista.forEach { p ->
 
+            //Crear ProductCard
             val card = inflater.inflate(R.layout.item_product_card, listContainer, false)
 
             // Poner texto
@@ -97,6 +101,7 @@ class MainActivity : AppCompatActivity() {
             // Agregar id del producto al tag del checkbox del Product Card
             card.findViewById<CheckBox>(R.id.cbSelect).setTag(R.id.tag_product_id, p.id)
 
+            //Agregar producto a la lista
             listContainer.addView(card)
         }
     }
