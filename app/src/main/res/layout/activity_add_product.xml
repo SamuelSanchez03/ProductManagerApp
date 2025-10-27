@@ -5,7 +5,7 @@
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:background="@android:color/transparent">
 
-    <!-- Dimmed scrim. Tap anywhere outside the card to close -->
+
     <View
         android:id="@+id/scrim"
         android:layout_width="match_parent"
@@ -13,7 +13,6 @@
         android:background="#20000000"
         android:clickable="true"/>
 
-    <!-- Centered popup card -->
     <LinearLayout
         android:id="@+id/popupCard"
         android:layout_width="match_parent"
@@ -35,7 +34,7 @@
             android:gravity="center"
             android:paddingBottom="12dp" />
 
-        <!-- Placeholder fields (you can hook later) -->
+
         <EditText
             android:id="@+id/etName"
             android:layout_width="match_parent"
