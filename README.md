@@ -176,15 +176,15 @@ com.up.productmanager/
   - Button “Delete Selected” removes all checked items.
   - Button "Add New Product" opens AddProductActivity as a popup.
   
-- **AddProductActivity.kt** 
-   Popup activity that allows users to add a new product.
-   - Fields:
-     - Name (TextField)
-     - Price (Numeric input)
-     - Quantity (Numeric input)
-   - Button "Cancel" closes the popup and returns to MainActivity.
-   - Button “Save” sends a POST request using `viewModel.createProduct()`.
-   - After saving, it returns to the main list and refreshes data.
+- **MainActivity.kt**  
+  Popup activity that allows users to add a new product.
+  - Fields:
+    - Name (TextField)
+    - Price (Numeric input)
+    - Quantity (Numeric input)
+  - Button "Cancel" closes the popup and returns to MainActivity.
+  - Button “Save” sends a POST request using `viewModel.createProduct()`.
+  - After saving, it returns to the main list and refreshes data.
 ---
 
 ## API Integration
