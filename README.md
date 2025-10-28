@@ -171,10 +171,19 @@ com.up.productmanager/
   ```
 
 - **MainActivity.kt**  
-  Current version serves as a test interface.  
-  It loads the list of products from the ViewModel and performs basic operations (create, delete).  
-  This will later be replaced by a proper RecyclerView-based UI.
-
+  Provides a functional UI for viewing, adding, and deleting products.
+  - Displays each product as a card showing its name, price, and available quantity, along with a checkbox. This list is loaded from the ViewModel.
+  - Button “Delete Selected” removes all checked items.
+  - Button "Add New Product" opens AddProductActivity as a popup.
+  
+- **AddProductActivity.kt** 
+  Popup activity that allows users to add a new product:
+     - Name (TextField)
+     - Price (Numeric input)
+     - Quantity (Numeric input)
+   - Button "Cancel" closes the popup and returns to MainActivity.
+   - Button “Save” sends a POST request using `viewModel.createProduct()`.
+   - After saving, it returns to the main list and refreshes data.
 ---
 
 ## API Integration
@@ -223,34 +232,6 @@ The backend API (FastAPI) provides the following endpoints:
    viewModel.products.observe(this) { list -> ... }
    viewModel.message.observe(this) { msg -> ... }
    ```
-
----
-
-## What Remains to Be Implemented (Frontend)
-
-The backend integration is complete.  
-Frontend tasks remaining:
-
-1. **Product List Screen (RecyclerView)**
-   - Display each product with name, price, and available quantity.
-   - Include a checkbox next to each product for multi-selection.
-   - Add a button “Delete Selected” that removes all checked items.
-
-2. **Add Product Screen**
-   - A new Activity to input product details:
-     - Name (TextField)
-     - Price (Numeric input)
-     - Quantity (Numeric input)
-   - Button “Save” that sends a POST request using `viewModel.createProduct()`.
-   - After saving, return to the main list and refresh data.
-
-3. **Confirmations & Feedback**
-   - Show confirmation dialogs before deleting.
-   - Show success/error messages from `viewModel.mensaje` using Toast.
-
-4. **Navigation & Design**
-   - Implement navigation between MainActivity and AddProductActivity.
-   - Apply basic UI styling and consistent theme.
 
 ---
 
