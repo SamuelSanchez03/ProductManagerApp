@@ -177,7 +177,8 @@ com.up.productmanager/
   - Button "Add New Product" opens AddProductActivity as a popup.
   
 - **AddProductActivity.kt** 
-  Popup activity that allows users to add a new product:
+  Popup activity that allows users to add a new product.
+   - Fields:
      - Name (TextField)
      - Price (Numeric input)
      - Quantity (Numeric input)
