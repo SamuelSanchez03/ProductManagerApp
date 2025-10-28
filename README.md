@@ -178,10 +178,7 @@ com.up.productmanager/
   
 - **MainActivity.kt**  
   Popup activity that allows users to add a new product.
-  - Fields:
-    - Name (TextField)
-    - Price (Numeric input)
-    - Quantity (Numeric input)
+  - Fields: Name (TextField), Price (Numeric input), Quantity (Numeric input)
   - Button "Cancel" closes the popup and returns to MainActivity.
   - Button “Save” sends a POST request using `viewModel.createProduct()`.
   - After saving, it returns to the main list and refreshes data.
