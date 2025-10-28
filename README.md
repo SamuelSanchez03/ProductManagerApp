@@ -176,7 +176,7 @@ com.up.productmanager/
   - Button “Delete Selected” removes all checked items.
   - Button "Add New Product" opens AddProductActivity as a popup.
   
-- **MainActivity.kt**  
+- **AddProductActivity.kt**  
   Popup activity that allows users to add a new product.
   - Fields: Name (TextField), Price (Numeric input), Quantity (Numeric input)
   - Button "Cancel" closes the popup and returns to MainActivity.
